@@ -1,0 +1,110 @@
+<!--
+  Generated template for the ApprovalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+ 
+  <ion-toolbar>
+      <ion-buttons  style="float: left;">
+      <button ion-button  start   icon-only (click)="goMsgCenter()">
+          <ion-icon name="message"   ></ion-icon>
+          <div style=" 
+          margin-top: -25px;
+          margin-left: -10px;
+           
+            z-index: 999;"><div class="box2">{{unReadedCnt}}</div></div>
+        </button>
+      </ion-buttons>
+    <ion-title style="text-align: center;">审批</ion-title>
+     <ion-buttons end>
+      <button ion-button  icon-only (click)="doScanner()">
+        <ion-icon ios="ios-qr-scanner" md="md-qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+      <!-- <button ion-button icon-only (click)="presentFilter()">
+        <ion-icon ios="ios-funnel-outline" md="md-funnel"></ion-icon>
+      </button> -->
+
+  </ion-toolbar>
+  <!-- <ion-toolbar no-border-top>
+    <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="updateSchedule()"
+                   placeholder="搜索">
+    </ion-searchbar>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="数据加载中...">
+    </ion-refresher-content>
+    </ion-refresher>
+    <ion-segment [(ngModel)]="segment"  >
+      <ion-segment-button value="todo">
+            待审批({{shownTasks.length}})
+      </ion-segment-button>
+      <ion-segment-button  value="doneTask" (ionSelect)="selectDoneTask()">
+        已审批任务
+      </ion-segment-button>
+      <ion-segment-button value="istarted" (ionSelect)="selectMyStarted()">
+        我发起的
+      </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="segment">
+        <div id="searchDiv" style="margin-left:9%; float: left;font-size: 20px;height: 70px;line-height: 70px" (click)="showHidden()">
+        <ion-icon style="margin-top: 5px"  name="fangdajing"></ion-icon>&nbsp;搜索           
+        </div>
+        <div id="filterDiv" style="margin-right:9%;float:right; font-size: 20px;height: 70px;line-height: 70px"  (click)="presentFilter()">
+          <ion-icon style="margin-top: 5px"  name="loudou"></ion-icon>&nbsp;筛选
+        </div>
+        <div id="searchBarDiv" style="display: none">
+          <ion-searchbar style="height: 70px;" (ionInput)="updateSchedule($event)" 
+          placeholder="搜索"
+          [(ngModel)]="searchQuery"
+          [showCancelButton]="true"
+          cancelButtonText="取消"
+          (ionClear)="showFilter()">
+          </ion-searchbar>            
+        </div>
+      <ion-list #taskList *ngSwitchCase="'todo'">  
+        <ion-item-sliding *ngFor="let task of shownTasks" (click)="openItem(task)" detail-push >
+          <button ion-item >
+            <h4 text-wrap>任务单名称：{{task.vars.map.title}}</h4>
+            <p>当前环节：{{task.taskName}}</p>
+            <p>流程类型：{{task.procDefName}}</p> 
+            <p>创建时间：{{task.taskCreateDate}}</p>                          
+          </button>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'doneTask'">
+        <ion-item-sliding *ngFor="let task of doneTasks" (click)="openDoneItem(task)" detail-push >
+            <button ion-item >
+              <h4 text-wrap>任务单名称：{{task.vars.map.title}}</h4>
+              <p>流程类型：{{task.procDefName}}</p> 
+              <p>完成时间：{{task.taskEndDate}}</p>                          
+            </button>
+          </ion-item-sliding>
+    </ion-list>
+    <ion-list *ngSwitchCase="'istarted'">
+      <ion-item-sliding *ngFor="let proc of istartedProcesses" (click)="openProcessItem(proc)" detail-push >
+        <button ion-item >
+          <h4 text-wrap>任务单名称：{{proc.vars.map.title}}</h4>
+          <p>流程名称：{{proc.procDefName}}</p>
+          <p>发起时间：{{proc.processStartDate}}</p>
+          <p>结束时间：{{proc.processEndDate}}</p>                    
+        </button>
+      </ion-item-sliding>
+    </ion-list>
+    </div>
+    <ion-list-header showWhen="size==0">
+        没有任务单审批
+    </ion-list-header>
+
+</ion-content>

@@ -1,0 +1,55 @@
+page-map {
+
+
+	.ion-md-list-box {
+	  font-size: 22px;
+	}
+	.ion-md-globe {
+	  font-size: 22px;
+	}
+	
+}
+ 
+#apDiv1 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	top: 0px;
+	z-index: 999;
+	background-color: rgba(255, 255, 255, 0.2);
+	text-align: center;
+}
+
+#carsdiv {
+	position: absolute;
+	width:100%; 
+	height: 230px; 
+	overflow: auto;
+	 
+	bottom: 0%;
+	z-index: 9999;
+	background-color:  rgba(255,255,255, 0.9);
+	
+
+}
+.action-sheets-basic-page {
+	.ion-md-share {
+		color: #ED4248;
+	}
+	.ion-md-ionic {
+		color: #508AE4;
+	}
+	.ion-md-heart-outline {
+		color: #31D55F;
+	}
+	.action-sheet-cancel ion-icon,
+	.action-sheet-destructive ion-icon {
+		color: #757575;
+	}
+	.ion-md-pin {
+		color: #ED4248;
+	}
+
+	
+	}

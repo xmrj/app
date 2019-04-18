@@ -1,0 +1,39 @@
+<!--
+  Generated template for the SignaturePadPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title style="text-align: center;">审批人签字</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <signature-pad #signaturePad  [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+   <!-- <div color="danger">提示：请先确认签名，然后上传签名</div> -->
+  <!-- <ion-grid>
+     <ion-row>
+       <ion-col col-6>
+        <button ion-button  color="light" (click)="drawClear()">重新签名</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button  color="primary" (click)="upload()">确认签名</button>
+      </ion-col> -->
+      <!-- <ion-col col-4>
+        <button ion-button  color="danger" (click)="upload()">2上传签名</button>
+      </ion-col>       -->
+     <!-- </ion-row>
+  </ion-grid> -->
+  <footer>
+    <button class="bohui"  (click)="drawClear()">重新签名</button>     
+    <button class="tongyi" (click)="upload()">确认签名</button>
+   </footer>
+  <!-- <ion-img  src="../../assets/imgs/green_ne_1.png" ></ion-img> -->
+  <!-- <div><img [src]="signatureImage"  *ngIf="signatureImage" ></div> -->
+
+</ion-content>

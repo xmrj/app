@@ -1,0 +1,50 @@
+<!--
+  Generated template for the TaskFilterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">取消</button>
+      </ion-buttons>
+  
+      <ion-title>
+          设置查询条件
+      </ion-title>
+
+    </ion-toolbar>  
+</ion-header>
+
+<ion-content padding>
+      <ion-list no-lines>
+          <ion-item>
+            <ion-label>流程类型</ion-label>
+            <ion-select [(ngModel)]="flowType" placeholder="全部流程" okText="确定" cancelText="取消" >
+              <ion-option value="lims_b_sampling_task" >采样任务单审核</ion-option>
+              <ion-option value="lims_b_sample_register">采样记录审核</ion-option>
+              <ion-option value="lims_b_sample_transfer">样品交接流程</ion-option>
+              <ion-option value="lims_b_test_task">检测任务单审批</ion-option>
+              <ion-option value="lims_b_test_result_check" >检测结果复核</ion-option>
+              <ion-option value="lims_b_test_result_task">检测结果审核</ion-option>
+              <ion-option value="lims_b_test_report">检测报告审批</ion-option>
+              <ion-option value="lims_b_task_extension_apply">延期任务审批</ion-option>
+              <ion-option value="lims_b_curve_manual_summary">手工曲线审批流程</ion-option>           
+            </ion-select>
+          </ion-item>
+          <ion-item>
+              <ion-label>开始日期</ion-label>
+              <ion-datetime displayFormat="YYYY-MM-DD" max="2056" [(ngModel)]="startDate" cancelText="取消" doneText="确定"></ion-datetime>
+          </ion-item>
+          <ion-item>
+              <ion-label>结束日期</ion-label>
+              <ion-datetime displayFormat="YYYY-MM-DD" max="2056" [(ngModel)]="endDate" cancelText="取消" doneText="确定"></ion-datetime>
+          </ion-item>
+          <ion-item>
+              <button ion-button (click)="resetFilters()"  >重置</button>
+              <button ion-button item-end (click)="applyFilters()" strong>查询</button>
+            </ion-item>                          
+        </ion-list>
+
+</ion-content>

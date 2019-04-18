@@ -1,0 +1,96 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title style="text-align: center;">采样任务单审批</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>  
+      <div>
+        <h3>{{item.samplingTableName}}</h3>
+        <p>{{item.createDate}}</p>     
+      </div>
+      <ion-item *ngIf="isShowFooter">
+        <ion-label  class="list-name" >当前环节：</ion-label><ion-label class="list-wrap" text-wrap>{{taskName}}</ion-label>   
+      </ion-item>
+      <ion-item>
+          <!-- <div color="primary">任务单名称: {{ item.samplingTableName }}</div>  -->
+        <ion-label  class="list-name" >任务单名称：</ion-label><ion-label class="list-wrap" text-wrap>{{item.samplingTableName}}</ion-label> 
+      </ion-item>
+      <ion-item>
+        <ion-label  class="list-name" >下发日期：</ion-label><ion-label class="list-wrap" text-wrap>{{item.issuedDate | date:'yyyy-MM-dd'}}</ion-label>   
+      </ion-item>
+      <ion-item>
+        <ion-label  class="list-name" >完成日期：</ion-label><ion-label class="list-wrap" text-wrap>{{item.finishDate | date:'yyyy-MM-dd'}}</ion-label>   
+      </ion-item>
+      <ion-item>
+        <ion-label  class="list-name" >任务指定组长：</ion-label><ion-label class="list-wrap" text-wrap>{{item.assignLeadName}}</ion-label>   
+      </ion-item>
+      <ion-item>
+        <ion-label  class="list-name" >任务指定组员：</ion-label>
+        <ion-label class="list-wrap" text-wrap>{{item.assignMemberNames}}</ion-label>   
+      </ion-item>  
+      
+      <ion-item>      
+          
+          <ion-label   outline item-end   (click)="pdf(item)"><ion-label   class="list-name" > 附件：</ion-label> <label class="xiazai" text-wrap> {{item.fileName}}</label> </ion-label>
+      </ion-item> 
+   
+      <ion-item>
+        <ion-label  style="color: #000;"  floating >审批意见：</ion-label>
+        <ion-textarea  [(ngModel)]="opinion" readonly="{{isShowFooter==false}}"></ion-textarea>
+      </ion-item>
+
+    
+      <div class="liucheng">
+        <p>流程信息</p>
+        
+        <div id="history">
+    
+        <div id="content">
+    
+          <ul class="list">
+    
+            <li *ngFor="let item of historicItems">
+    
+              <div class="liwrap">
+    
+                <div class="lileft">
+    
+                  <div class="date">
+    
+                    <span class="year">{{item.endTime| date:'yyyy-MM-dd'}}</span>
+    
+                    <span class="md">{{item.endTime| date:'HH:mm'}}</span>
+    
+                  </div>
+    
+                </div>
+    
+                <div class="point"><b></b></div>
+    
+                <div class="liright">
+    
+                  <div class="hisct colorr">{{item.activityName}}—{{item.assigneeName}}</div>
+                  <div class="hisct colorr">审批意见：{{item.comment}}</div>
+                </div>
+    
+              </div>
+    
+            </li>
+     
+    
+          </ul>
+    
+        </div>
+    
+      </div>
+      </div>
+      <div style="height: 30px; width: 100%;">&nbsp;</div>
+      <footer *ngIf="isShowFooter">
+        <button  class="bohui" (click)="approve('no')">驳回</button>      
+        <button  class="tongyi"    (click)="approve('yes')">同意</button>
+       </footer>
+</ion-content>

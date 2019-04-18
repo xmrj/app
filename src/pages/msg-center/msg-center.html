@@ -1,0 +1,39 @@
+<!--
+  Generated template for the MsgCenterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title style="text-align: center;">消息中心</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="deleteAllMsg()">
+            清空消息
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-list>   
+    <ion-item-sliding #slidingItem *ngFor="let  item of list " >
+        <ion-item (click)="markAsReads(slidingItem,item)" [ngClass]="{readed:item.readedOrNot=='1',unRead:item.readedOrNot=='0'}">
+            <h4>消息标题：{{item.pushTitle}}</h4>
+            <P text-wrap>消息内容：{{item.pushContent}}</P>
+            <P>推送时间：{{item.pushTime }}</P>
+        </ion-item>   
+        <ion-item-options side="right" >
+          <button ion-button icon-only   (click)="markAsRead(slidingItem,item)" color="light">
+              标为已读
+          </button>
+          <button ion-button icon-only  expandable (click)="removeItem(slidingItem,item)" color="danger">
+              删除
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

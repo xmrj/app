@@ -1,0 +1,14 @@
+page-mapmark {
+    #apDiv2 {
+        position: absolute;
+        width:100%; 
+        overflow: auto;
+    
+        bottom: 0%;
+        z-index: 999;
+        background-color:  rgba(255,255,255, 0.9);
+        text-align: center;
+        //background-color: #3d25a7; 
+        //-webkit-border-radius: 100px;
+    }
+}

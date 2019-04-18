@@ -1,0 +1,23 @@
+<!--
+  Generated template for the SignForPcPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar #navBar>
+    <ion-title style="text-align: center;">手机签字</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <signature-pad #signaturePad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+   <!-- <div color="danger">提示：请先确认签名，然后上传签名</div> -->
+   <footer>
+        <button class="bohui"  (click)="drawClear()">重新签名</button>     
+        <button class="tongyi" (click)="upload()">确认签名</button>
+       </footer>
+</ion-content>

@@ -1,0 +1,88 @@
+<!--
+  Generated template for the MapmarkPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <div   style="height: 100%; width: 100%"  id="map" #map  > 
+  
+  </div> 
+
+  <div id="apDiv1" interface="action-sheet"  style="display: none;top: 10%;">
+
+    <ion-item>
+        <ion-label>类型:</ion-label>
+        <ion-select  [(ngModel)]="gender"  disabled="disabled"  >
+          <ion-option value="0">企业标注</ion-option>
+          <ion-option value="1">点位标注</ion-option>
+        </ion-select>
+      </ion-item> 
+      <ion-item>
+          <ion-label stacked>企业名称</ion-label>
+          <ion-input type="text" [(ngModel)]="customerName" ></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>检测点位</ion-label>
+          
+          
+          <ion-select [(ngModel)]="pointString">
+            <div *ngFor="let typeData of pointsDataArr">
+              <ion-option value="{{typeData.point}}">{{typeData.point}}</ion-option>
+            </div>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <button ion-button  (click)="getcurrentpoint()">获取当前位置</button> 
+          <button ion-button  (click)="selfpoint()">自行标注</button> 
+          <button ion-button  (click)="shouchipoint()">手持设备录入</button> 
+      </ion-item>
+    <div id="baiduzuobiao">
+      <ion-item>
+          <ion-label fixed>经度</ion-label><ion-input type="text" id="lng"   [(ngModel)]="point.lng" name="lng" ></ion-input>
+      </ion-item>
+      <ion-item>  
+          <ion-label fixed> 纬度</ion-label> <ion-input type="text" id="lat" [(ngModel)]="point.lat" name="lat" ></ion-input>
+      </ion-item>
+    </div>
+    <div id="shouchi" style=" display:none">
+      <ion-item>
+          <ion-label  >经度</ion-label><ion-input type="text" placeholder="请以减号-分隔录入度分秒，例如：117-22-26.0"   [(ngModel)]="passpoint.lng"  ></ion-input> 
+      </ion-item>
+  
+      <ion-item>  
+          <ion-label > 纬度</ion-label> <ion-input type="text" placeholder="请以减号-分隔录入度分秒，例如：34-49-30.6"   [(ngModel)]="passpoint.lat"   ></ion-input> 
+      </ion-item>
+    </div>
+   <button ion-button  (click)="markpoint()">标注</button> 
+   <button ion-button  (click)="cancel()">取消</button> 
+  
+</div>
+
+
+  <ion-list id="apDiv2" style="display: none;">
+      <ion-icon name="close" (click)="closeinfowindow()"></ion-icon>
+  <ion-item>{{title}}</ion-item>
+  
+      <ion-item>联系人:{{contacts}}</ion-item>
+      <ion-item>联系电话:{{telet}}</ion-item>
+  <ion-icon name="navigate" (click)="openBaiduMap()">导航</ion-icon>
+</ion-list>
+<ion-list id="carsdiv" style="display: none;">
+  <ion-item ion-item *ngFor="let item of cars" (click)="itemSelected(item)">
+  
+      {{ item.carno }}
+   
+  </ion-item>
+</ion-list>
+
+</ion-content>

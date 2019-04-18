@@ -1,0 +1,22 @@
+page-pdf {
+    .pdfViewerContainer
+    {
+        position: fixed;
+        height: 100%;
+        left: 0px;
+        bottom: 0px !important;
+        right: 0px;
+        z-index: 1;
+    }
+    
+    .pdfViewerFrame
+    {
+        width:100%;
+        height: 93.5%;
+    }
+    
+    .viewerNavbar
+    {
+        position: relative; z-index: 2;
+    }
+}

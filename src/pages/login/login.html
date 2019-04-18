@@ -1,0 +1,42 @@
+
+<ion-content style="background: #f4f5f7;">
+  <form  #loginForm="ngForm" novalidate>
+    
+      <div class="banner">
+        <img class="logo" src="assets/imgs/logo.png" />
+        <p class="title">实验室审批系统</p>
+      </div>
+      <ion-item class="phone">
+       <ion-icon style="color:#999999" item-left name="contact"></ion-icon>
+        <ion-input type="text" [(ngModel)]="account.username" placeholder="请输入用户名" name="username"  #username="ngModel" spellcheck="false" autocapitalize="off" required></ion-input>
+      </ion-item>
+
+      <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
+          登录名必填
+        </p>
+
+      <ion-item class="password">
+        <ion-icon style="font-size:5px;" item-left name="pass" ></ion-icon>
+        <ion-input type="password" [(ngModel)]="account.password" placeholder="请输入密码" name="password" #password="ngModel" required></ion-input>
+      </ion-item>
+      <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+          密码必填
+      </p>
+
+      <ion-row responsive-sm>
+          <ion-col>
+            <button ion-button (click)="doLogin(loginForm)" type="submit" class="dl">{{ 'LOGIN_BUTTON' | translate }}</button>
+          </ion-col>
+      </ion-row>
+    
+  </form>  
+</ion-content>
+<ion-footer>
+    <ion-toolbar>       
+        <ion-buttons end>
+            <button ion-button icon-only (click)="toConfig()">
+              <ion-icon ios="ios-settings" md="md-settings" item-right ></ion-icon>
+            </button>
+          </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

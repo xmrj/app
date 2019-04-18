@@ -1,0 +1,35 @@
+<!--
+  Generated template for the MapcarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>任务单车辆</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+<div style="height: 100%; width: 100%" id="carmapdiv" #carmapdiv></div>
+<ion-list id="apDivcar" style="display: none;">
+    <div class="text-align:right">
+      <ion-icon name="close" (click)="closeinfowindow()"></ion-icon>
+    </div>
+    <ion-item>
+      <div style="font-weight:bold">{{carno}}</div>
+      <div>通讯时间:{{txsj}}</div>
+      <div>状态:{{state}}</div>
+    </ion-item>
+    <ion-item>定位:GPS定位</ion-item>
+    <ion-item>
+      <div style="white-space:normal;">地址:{{dizhi}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="eye" (click)="playbackbutton()">回放</ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
